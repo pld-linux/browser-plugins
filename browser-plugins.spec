@@ -5,7 +5,8 @@
 #   (perhaps admin doesn't want all browsers have same plugins?)
 # - or, patch browsers to seek plugins in this packages base
 #   directory?
-Summary:	base package for browser plugins
+Summary:	Base package for web browser plugins
+Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins
 Version:	1.0
 Release:	0.1
@@ -20,6 +21,16 @@ This package provides base directory for browser plugins complying to
 Netscape Plugin API (NPAPI).
 
 Browsers known to support NPAPI:
+- Netscape Communicator/Navigator
+- Mozilla/Mozilla Firefox
+- Opera
+- Konqueror
+
+%description -l pl
+Ten pakiet dostarcza podstawowy katalog dla wtyczek przegl±darek
+zgodnych z Netscape Plugin API (NPAPI).
+
+Przegl±darki obs³uguj±ce NPAPI to:
 - Netscape Communicator/Navigator
 - Mozilla/Mozilla Firefox
 - Opera
