@@ -1,15 +1,11 @@
 # TODO
 # - convert all plugin packages to store their plugins in this base
 #   directory.
-# - is there need to create separate packages for different browsers
-#   (perhaps admin doesn't want all browsers have same plugins?)
-# - or, patch browsers to seek plugins in this packages base
-#   directory?
 Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins
 Version:	1.0
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Base
 URL:		http://www.mozilla.org/projects/plugins/
