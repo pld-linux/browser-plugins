@@ -5,11 +5,10 @@ Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins
 Version:	1.0
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		Base
 URL:		http://www.mozilla.org/projects/plugins/
-BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
