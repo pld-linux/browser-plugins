@@ -1,7 +1,7 @@
 # TODO
 # - convert all plugin packages to store their plugins in this base
 #   directory.
-# known browsers from PLD CVS:
+# known NPAPI compatible browsers from PLD CVS:
 # - mozilla
 # - mozilla-firefox
 # - konqueror
