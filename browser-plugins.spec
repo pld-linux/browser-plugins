@@ -1,6 +1,14 @@
 # TODO
 # - convert all plugin packages to store their plugins in this base
 #   directory.
+# known browsers from PLD CVS:
+# - mozilla
+# - mozilla-firefox
+# - konqueror
+# - opera (ix86 only)
+# - galeon
+# - skipstone
+# - kazehakase
 Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins
