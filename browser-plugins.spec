@@ -9,6 +9,7 @@
 # - galeon
 # - skipstone
 # - kazehakase
+# - netscape (trigger on netscape-common)
 Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins
