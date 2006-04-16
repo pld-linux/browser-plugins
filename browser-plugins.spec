@@ -10,11 +10,12 @@
 # - skipstone
 # - kazehakase
 # - netscape (trigger on netscape-common)
+# - seamonkey
 Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins
 Version:	1.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		Base
 Provides:	%{name}(%{_target_cpu}) = %{version}-%{release}
@@ -27,7 +28,7 @@ Netscape Plugin API (NPAPI).
 
 Browsers known to support NPAPI:
 - Netscape Communicator/Navigator
-- Mozilla/Mozilla Firefox
+- Mozilla/Mozilla Firefox/Seamonkey
 - Opera
 - Konqueror
 
@@ -37,7 +38,7 @@ zgodnych z Netscape Plugin API (NPAPI).
 
 Przegl±darki obs³uguj±ce NPAPI to:
 - Netscape Communicator/Navigator
-- Mozilla/Mozilla Firefox
+- Mozilla/Mozilla Firefox/Seamonkey
 - Opera
 - Konqueror
 
