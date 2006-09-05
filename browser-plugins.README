@@ -3,7 +3,7 @@ New browser-plugins
 Technical implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-filesystem provides
+filesystem provides:
 - %dir %{_plugindir}
 %{_plugindir} expands to %{_libdir}/browser-plugins
 
@@ -22,7 +22,11 @@ The update script will scan /usr/lib/browser-plugins and
 /usr/lib64/browser-plugins dir for existing plugins as browser-plugins itself
 is noarch package.
 
-plugin provides
+browser-plugins requires:
+- filesystem >= EVR
+the EVR is package version including %{_libdir}/browser-plugins directory.
+
+plugin provides:
 - %config(noreplace) /etc/browser-plugins/blacklist.d/<plugin>-<browser>-%{_target_base_arch}.blacklist
 The blacklist contains shell globs of filenames to be excluded from linking to
 browser specific plugin directory. The shell globs are base of %{_plugindir},
@@ -31,26 +35,26 @@ subdirectories are allowed. Comments and empty lines are ignored.
 - %post/%postun scriptlet
 the scriptlet will call %update_browser_plugins
 
-plugin requires
+plugin requires:
 - BuildRequires: rpmbuild(macros) >= VERSION
 - Requires: browser-plugins >= 2.0
 
-browser provides
+browser provides:
 - /etc/browser-plugins/browser.d/<browser>.%{_target_base_arch} symlink
 the symlink will point to the single directory where it searches for its plugins.
 
 - %post/%postun scriptlet
 the scriptlet will call %update_browser_plugins
 
-browser requires
+browser requires:
 - BuildRequires: rpmbuild(macros) >= VERSION
 - Requires: browser-plugins >= 2.0
 
-rpm-build-macros provides
+rpm-build-macros provides:
 - %update_browser_plugins macro
 the macro will just call /usr/sbin/update-browser-plugins and ignore any errors from it.
 - %{_browser_plugindir} macro
 the macro will be defined as /usr/%{_lib}/browser-plugins
 
-adapter provides
+adapter provides:
 - replacement for sole location of browser-plugins with %{_browser_plugindir} macro
