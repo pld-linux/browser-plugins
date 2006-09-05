@@ -5,23 +5,28 @@ Technical implementation
 
 browser-plugins(%{_target_base_arch}) provides:
 - %dir /etc/browser-plugins
+- %dir %{_plugindir}
+%{_plugindir} expands to %{_libdir}/browser-plugins
+
 - %{_sbindir}/update-browser-plugins script
 The script will parse /etc/browser-plugins/*.blacklist and delete dead and add
 new symlinks to browser specific plugin directories.
 
-update-browser-plugins script knows about browsers. it has hardcoded list of
-browser plugin directories.
+The list of browser plugin directories is taken by reading existing symlinks
+matching glob: /etc/browser-plugins/browser.d/<browser>.%{_target_base_arch}
 
 plugin provides
 - %config(noreplace) /etc/browser-plugins/<plugin>-<browser>-%{_target_base_arch}.blacklist
 The blacklist contains shell globs of filenames to be excluded from linking to
 browser specific plugin directory. The shell globs are base of %{_plugindir},
-subdirectories are allowed.
+subdirectories are allowed. Comments and empty lines are ignored.
+
 - %post/%postun scriptlet
 the scriptlet will call %update_browser_plugins
 
 browser provides
 - /etc/browser-plugins/browser.d/<browser>.%{_target_base_arch} symlink
 the symlink will point to the single directory where it searches for its plugins.
+
 - %post/%postun scriptlet
 the scriptlet will call %update_browser_plugins
