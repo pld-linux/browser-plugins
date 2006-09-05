@@ -31,9 +31,26 @@ subdirectories are allowed. Comments and empty lines are ignored.
 - %post/%postun scriptlet
 the scriptlet will call %update_browser_plugins
 
+plugin requires
+- BuildRequires: rpmbuild(macros) >= VERSION
+- Requires: browser-plugins >= 2.0
+
 browser provides
 - /etc/browser-plugins/browser.d/<browser>.%{_target_base_arch} symlink
 the symlink will point to the single directory where it searches for its plugins.
 
 - %post/%postun scriptlet
 the scriptlet will call %update_browser_plugins
+
+browser requires
+- BuildRequires: rpmbuild(macros) >= VERSION
+- Requires: browser-plugins >= 2.0
+
+rpm-build-macros provides
+- %update_browser_plugins macro
+the macro will just call /usr/sbin/update-browser-plugins and ignore any errors from it.
+- %{_browser_plugindir} macro
+the macro will be defined as /usr/%{_lib}/browser-plugins
+
+adapter provides
+- replacement for sole location of browser-plugins with %{_browser_plugindir} macro
