@@ -1,4 +1,7 @@
-New browser-plugins
+browser-plugins 2.0 for PLD Linux
+
+Author:	Elan Ruusamäe <glen@pld-linux.org>
+Author:	Patryk Zawadzki <patrys@pld-linux.org>
 
 Technical implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -27,7 +30,7 @@ browser-plugins requires:
 the EVR is package version including %{_libdir}/browser-plugins directory.
 
 plugin provides:
-- %config(noreplace) /etc/browser-plugins/blacklist.d/<plugin>-<browser>-%{_target_base_arch}.blacklist
+- %config(noreplace) /etc/browser-plugins/blacklist.d/<plugin>-<browser>.%{_target_base_arch}.blacklist
 The blacklist contains shell globs of filenames to be excluded from linking to
 browser specific plugin directory. The shell globs are base of %{_plugindir},
 subdirectories are allowed. Comments and empty lines are ignored.
