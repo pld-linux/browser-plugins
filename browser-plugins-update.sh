@@ -62,7 +62,13 @@ get_browsers() {
 # returns plugin directory for browser
 browserplugindir() {
 	local browser="$1"
-	readlink "$browsersdir/$browser"
+	local dir
+	dir=$(readlink "$browsersdir/$browser")
+	if [ -z "$dir" ]; then
+		echo >&2 "$0: browser plugin dir empty for $browser; exiting!"
+		exit 1
+	fi
+	echo "$dir"
 }
 
 remove_plugins() {
