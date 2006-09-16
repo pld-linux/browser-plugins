@@ -18,14 +18,12 @@ Version:	2.0
 Release:	0.7
 License:	GPL
 Group:		Base
-Source0:	%{name}.README
-Source1:	%{name}-update.sh
-# temporarily for testing
-Provides:	%{name}(%{_target_base_arch}) = %{version}-%{release}
-#BuildArch:	noarch
+Source0:	browser-plugins.README
+Source1:	browser-plugins-update.sh
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_sysconfdir	/etc/%{name}
+%define		_sysconfdir	/etc/browser-plugins
 # temporarily for testing
 %define		update_browser_plugins /usr/sbin/update-browser-plugins
 
@@ -52,7 +50,7 @@ Przegl±darki obs³uguj±ce NPAPI to:
 %prep
 %setup -qcT
 cp -a %{SOURCE0} README
-cp -a %{SOURCE1} update-%{name}
+cp -a %{SOURCE1} update-browser-plugins
 
 cat > blacklist.local <<'EOF'
 # list your local overrides here
@@ -62,7 +60,7 @@ EOF
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/{blacklist,browsers}.d,%{_sbindir}}
-install update-%{name} $RPM_BUILD_ROOT%{_sbindir}
+install update-browser-plugins $RPM_BUILD_ROOT%{_sbindir}
 for browser in opera firefox mozilla mozilla-firefox; do
 	for arch in i386 x86_64; do
 		cp -a blacklist.local $RPM_BUILD_ROOT%{_sysconfdir}/blacklist.d/local.$browser.$arch.blacklist
