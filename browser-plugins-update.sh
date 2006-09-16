@@ -49,8 +49,10 @@ blacklisted() {
 # returns list of installed browsers
 get_browsers() {
 	for dir in "$browsersdir"/*.*; do
-		dir="${dir#$browsersdir/}"
-		browsers="$browsers $dir"
+		if [ -L "$dir" ]; then
+			dir="${dir#$browsersdir/}"
+			browsers="$browsers $dir"
+		fi
 	done
 
 	echo >&3 "browsers: $browsers"
