@@ -13,7 +13,7 @@
 # - seamonkey
 Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
-Name:		browser-plugins
+Name:		browser-plugins2
 Version:	2.0
 Release:	0.7
 License:	GPL
