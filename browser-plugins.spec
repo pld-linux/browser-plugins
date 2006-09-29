@@ -15,7 +15,7 @@ Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins2
 Version:	2.0
-Release:	0.7
+Release:	0.8
 License:	GPL
 Group:		Base
 Source0:	browser-plugins.README
@@ -70,6 +70,7 @@ done
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%if 0
 %post
 %update_browser_plugins
 
@@ -77,6 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 if [ "$1" = 0 ]; then
 	%update_browser_plugins uninstall
 fi
+%endif
 
 %files
 %defattr(644,root,root,755)
