@@ -14,9 +14,10 @@
 # - skipstone
 Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
+# TODO: to be renamed to actual package name when package is finished
 Name:		browser-plugins2
 Version:	2.0
-Release:	0.8
+Release:	0.9
 License:	GPL
 Group:		Base
 Source0:	browser-plugins.README
@@ -25,7 +26,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/browser-plugins
-# temporarily for testing
+# TODO: to be moved to rpm-build-macros
 %define		update_browser_plugins /usr/sbin/update-browser-plugins
 
 %description
@@ -62,6 +63,8 @@ EOF
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/{blacklist,browsers}.d,%{_sbindir}}
 install update-browser-plugins $RPM_BUILD_ROOT%{_sbindir}
+
+# TODO: to be moved to browser packages
 for browser in opera firefox mozilla mozilla-firefox mozilla-firefox-bin; do
 	for arch in i386 x86_64; do
 		cp -a blacklist.local $RPM_BUILD_ROOT%{_sysconfdir}/blacklist.d/local.$browser.$arch.blacklist
@@ -72,6 +75,7 @@ done
 rm -rf $RPM_BUILD_ROOT
 
 %if 0
+# TODO: to be enabled if tested enough
 %post
 %update_browser_plugins
 
