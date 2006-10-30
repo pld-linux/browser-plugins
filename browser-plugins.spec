@@ -17,7 +17,7 @@ Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 # TODO: to be renamed to actual package name when package is finished
 Name:		browser-plugins2
 Version:	2.0
-Release:	0.9
+Release:	0.10
 License:	GPL
 Group:		Base
 Source0:	browser-plugins.README
@@ -54,9 +54,8 @@ Przegl±darki obs³uguj±ce NPAPI to:
 cp -a %{SOURCE0} README
 cp -a %{SOURCE1} update-browser-plugins
 
-cat > blacklist.local <<'EOF'
-# list your local overrides here
-# the format is shell globs at base dir of plugindir
+cat > blacklist <<'EOF'
+# The format is shell globs at base dir of plugindir
 EOF
 
 %install
@@ -67,9 +66,13 @@ install update-browser-plugins $RPM_BUILD_ROOT%{_sbindir}
 # TODO: to be moved to browser packages
 for browser in opera firefox mozilla mozilla-firefox mozilla-firefox-bin; do
 	for arch in i386 x86_64; do
-		cp -a blacklist.local $RPM_BUILD_ROOT%{_sysconfdir}/blacklist.d/local.$browser.$arch.blacklist
+		cp -a blacklist $RPM_BUILD_ROOT%{_sysconfdir}/blacklist.d/$browser.$arch.blacklist
 	done
 done
+cat <<'EOF'>> $RPM_BUILD_ROOT%{_sysconfdir}/blacklist.d/opera.i386.blacklist
+# opera has no use of .xpt files.
+*.xpt
+EOF
 
 %clean
 rm -rf $RPM_BUILD_ROOT
