@@ -4,6 +4,7 @@
 # known NPAPI compatible browsers from PLD CVS:
 # - mozilla
 # - mozilla-firefox
+# - mozilla-firefox-bin
 # - konqueror
 # - opera (ix86 only)
 # - galeon
@@ -61,7 +62,7 @@ EOF
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/{blacklist,browsers}.d,%{_sbindir}}
 install update-browser-plugins $RPM_BUILD_ROOT%{_sbindir}
-for browser in opera firefox mozilla mozilla-firefox; do
+for browser in opera firefox mozilla mozilla-firefox mozilla-firefox-bin; do
 	for arch in i386 x86_64; do
 		cp -a blacklist.local $RPM_BUILD_ROOT%{_sysconfdir}/blacklist.d/local.$browser.$arch.blacklist
 	done
