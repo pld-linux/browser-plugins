@@ -1,17 +1,17 @@
 # TODO
 # - convert all plugin packages to store their plugins in this base
 #   directory.
-# known NPAPI compatible browsers from PLD CVS:
+# known NPAPI compatible browsers from PLD Linux CVS:
+# - galeon
+# - kazehakase
+# - konqueror
 # - mozilla
 # - mozilla-firefox
 # - mozilla-firefox-bin
-# - konqueror
-# - opera (ix86 only)
-# - galeon
-# - skipstone
-# - kazehakase
 # - netscape (trigger on netscape-common)
+# - opera (ix86, ppc, sparc* only)
 # - seamonkey
+# - skipstone
 Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins2
