@@ -1,11 +1,12 @@
 #!/bin/sh
 # Author: Elan Ruusamäe <glen@pld-linux.org>
-# Date: 2006-09-13
-# See more browser-plugins.README
-
+# Date: 2006-09-13, Initial revision
+# Date: 2006-10-31, Added arch checking
+#
+# For more information see browser-plugins.README
+#
 # TODO
-# - implement blacklist.d/anyfile-browser.arch.blacklist support
-# - check not to link amd64 plugins to opera.i386 dir
+# - implement uninstall
 
 sysconfdir='/etc/browser-plugins'
 browsersdir="$sysconfdir/browsers.d"
@@ -30,8 +31,23 @@ in_blacklist() {
 	return 1
 }
 
+# bool arch_compatible(char *browser, char *plugindir)
+# returns true if browser and plugindir are from same arch
+arch_compatible() {
+	local browser="$1"
+	local plugindir="$2"
+
+	if ([[ "$browser" = *.x86_64 ]] && [[ "$plugindir" != */lib64/* ]]) || \
+		([[ "$browser" != *.x86_64 ]] && [[ "$plugindir" = */lib64/* ]]); then
+		echo >&3 "  $browser not compatible with $plugindir"
+		return 1
+	fi
+	return 0
+}
+
 # bool blacklisted(char *browser, char *pluginfile)
 # returns true if pluginfile is blacklisted for browser
+# returns also true if pluginfile is from incompatible arch
 blacklisted() {
 	local browser="$1"
 	local pluginfile="$2"
@@ -65,17 +81,22 @@ browserplugindir() {
 	local dir
 	dir=$(readlink "$browsersdir/$browser")
 	if [ -z "$dir" ]; then
-		echo >&2 "$0: browser plugin dir empty for $browser; exiting!"
+		echo >&2 "$0: ERROR: browser plugin dir pointing to nowhere for $browser!"
 		exit 1
 	fi
 	echo "$dir"
 }
 
+# kill dead links to plugins from browser dirs.
+# dead links appear if plugin is removed or if newer plugin version no longer
+# includes previously packaged file
 remove_plugins() {
-	# kill dead links
 	for browser in $browsers; do
 		find $(browserplugindir "$browser") -type l | while read link; do
-			[ -f "$link" ] || rm -f "$link"
+			if [ ! -f "$link" ]; then
+				echo "Removing $link"
+				rm -f "$link"
+			fi
 		done
 	done
 }
@@ -94,6 +115,11 @@ install_plugins() {
 				echo >&3 " check $pluginfile for $browser"
 				browserplugindir=$(browserplugindir "$browser")
 				link="$browserplugindir/$pluginfile"
+
+				if ! arch_compatible "$browser" "$plugindir"; then
+					continue
+				fi
+
 				if blacklisted "$browser" "$pluginfile"; then
 					# just in case unlink it
 					if [ -f "$link" ]; then
@@ -103,6 +129,11 @@ install_plugins() {
 				else
 					# skip existing links
 					[ ! -L $link ] || continue
+					if [[ "$pluginfile" = */* ]]; then
+						# FIXME: what's the proper handling for this?
+						echo >&2 "$0: Warning: pluginfile $pluginfile includes subdir, file ignored"
+						continue
+					fi
 					echo "Installing $pluginfile to $browserplugindir"
 					ln -s "$plugindir/$pluginfile" "$link"
 				fi
