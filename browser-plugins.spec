@@ -17,7 +17,7 @@ Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 # TODO: to be renamed to actual package name when package is finished
 Name:		browser-plugins2
 Version:	2.0
-Release:	0.10
+Release:	0.11
 License:	GPL
 Group:		Base
 Source0:	browser-plugins.README
@@ -81,11 +81,6 @@ rm -rf $RPM_BUILD_ROOT
 # TODO: to be enabled if tested enough
 %post
 %update_browser_plugins
-
-%preun
-if [ "$1" = 0 ]; then
-	%update_browser_plugins uninstall
-fi
 %endif
 
 %files
