@@ -104,11 +104,14 @@ remove_plugins() {
 install_plugins() {
 	# link new plugins
 	for plugindir in $plugindirs; do
+		echo >&3
+		echo >&3 "check $plugindir"
+
 		# skip non-existing plugindirs
 		[ -d "$plugindir" ] || continue
 
 		cd "$plugindir"
-		find -type f | while read line; do
+		find -type f -o -type l | while read line; do
 			pluginfile="${line#./}"
 			echo >&3 "pluginfile: $pluginfile"
 			for browser in $browsers; do
