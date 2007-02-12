@@ -13,7 +13,7 @@
 # - seamonkey
 # - skipstone
 Summary:	Base package for web browser plugins
-Summary(pl.UTF-8):   Podstawowy pakiet dla wtyczek przeglądarek WWW
+Summary(pl.UTF-8):	Podstawowy pakiet dla wtyczek przeglądarek WWW
 Name:		browser-plugins
 Version:	2.0
 Release:	1
