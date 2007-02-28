@@ -15,7 +15,7 @@
 Summary:	Base package for web browser plugins
 Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins
-Version:	2.0
+Version:	2.0.1
 Release:	1
 License:	GPL
 Group:		Base
