@@ -13,10 +13,10 @@
 # - seamonkey
 # - skipstone
 Summary:	Base package for web browser plugins
-Summary(pl.UTF-8):	Podstawowy pakiet dla wtyczek przeglÄ…darek WWW
+Summary(pl):	Podstawowy pakiet dla wtyczek przegl±darek WWW
 Name:		browser-plugins
-Version:	2.0
-Release:	2
+Version:	2.0.1
+Release:	1
 License:	GPL
 Group:		Base
 BuildRequires:	rpmbuild(macros) >= 1.356
@@ -38,11 +38,11 @@ Browsers known to support NPAPI:
 - Opera
 - Konqueror
 
-%description -l pl.UTF-8
-Ten pakiet dostarcza podstawowy katalog dla wtyczek przeglÄ…darek
+%description -l pl
+Ten pakiet dostarcza podstawowy katalog dla wtyczek przegl±darek
 zgodnych z Netscape Plugin API (NPAPI).
 
-PrzeglÄ…darki obsÅ‚ugujÄ…ce NPAPI to:
+Przegl±darki obs³uguj±ce NPAPI to:
 - Netscape Communicator/Navigator
 - Mozilla/Mozilla Firefox/Seamonkey
 - Opera
