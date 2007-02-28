@@ -85,7 +85,7 @@ browserplugindir() {
 	local dir
 	dir=$(readlink "$browsersdir/$browser")
 	if [ ! -d "$dir" -o -z "$dir" ]; then
-		echo >&2 "$0: ERROR: browser plugin dir pointing to nowhere for $browser!"
+		echo >&2 "$0: ERROR: could not resolve plugindir for $browser"
 		exit 1
 	fi
 	echo "$dir"
