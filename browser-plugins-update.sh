@@ -66,6 +66,10 @@ blacklisted() {
 get_browsers() {
 	for dir in "$browsersdir"/*.*; do
 		if [ -L "$dir" ]; then
+			if [ ! -d "$dir" ]; then
+				echo >&2 "$0: WARNING: plugindir $dir is not pointing to directory, browser ignored"
+				continue
+			fi
 			dir="${dir#$browsersdir/}"
 			browsers="$browsers $dir"
 		fi
@@ -80,7 +84,7 @@ browserplugindir() {
 	local browser="$1"
 	local dir
 	dir=$(readlink "$browsersdir/$browser")
-	if [ -z "$dir" ]; then
+	if [ ! -d "$dir" -o -z "$dir" ]; then
 		echo >&2 "$0: ERROR: browser plugin dir pointing to nowhere for $browser!"
 		exit 1
 	fi
