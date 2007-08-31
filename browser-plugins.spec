@@ -16,13 +16,14 @@ Summary:	Base package for web browser plugins
 Summary(pl.UTF-8):	Podstawowy pakiet dla wtyczek przeglądarek WWW
 Name:		browser-plugins
 Version:	2.0.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Base
 BuildRequires:	rpmbuild(macros) >= 1.356
 Source0:	%{name}.README
 Source1:	%{name}-update.sh
 Requires:	filesystem >= 2.0-1.2
+Requires:	findutils
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
