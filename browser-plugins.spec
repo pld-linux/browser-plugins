@@ -1,4 +1,5 @@
 # TODO
+# - invoke nspluginwrapper install if one found installed in system
 # - convert all plugin packages to store their plugins in this base
 #   directory.
 # known NPAPI compatible browsers from PLD Linux CVS:
