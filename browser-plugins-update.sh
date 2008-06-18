@@ -78,6 +78,25 @@ get_browsers() {
 	echo >&3 "browsers: $browsers"
 }
 
+# void update_nspluginwrapper(void)
+# update nspluginwrapper links
+update_nspluginwrapper() {
+	[ -x /usr/bin/nspluginwrapper ] || return
+
+	umask 002
+	# call it always in install mode, as update mode does not update existing links
+	/usr/bin/nspluginwrapper -a -i
+
+	# this will remove oudated plugins
+	for a in /usr/lib64/browser-plugins/npwrapper.*.so; do
+		[ -f $a ] || continue
+		/usr/bin/nspluginwrapper -v -u $a
+	done
+
+	# run install again after nsplugin wrappers
+	install_plugins
+}
+
 # char *browserplugindir(char *)
 # returns plugin directory for browser
 browserplugindir() {
@@ -159,3 +178,4 @@ get_browsers
 
 remove_plugins
 install_plugins
+update_nspluginwrapper
