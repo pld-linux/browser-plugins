@@ -1,5 +1,4 @@
 # TODO
-# - invoke nspluginwrapper install if one found installed in system
 # - convert all plugin packages to store their plugins in this base
 #   directory.
 # known NPAPI compatible browsers from PLD Linux CVS:
@@ -16,8 +15,8 @@
 Summary:	Base package for web browser plugins
 Summary(pl.UTF-8):	Podstawowy pakiet dla wtyczek przeglądarek WWW
 Name:		browser-plugins
-Version:	2.0.1
-Release:	3
+Version:	3.0
+Release:	0.1
 License:	GPL
 Group:		Base
 BuildRequires:	rpmbuild(macros) >= 1.356
