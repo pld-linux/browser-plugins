@@ -1,22 +1,25 @@
 # TODO
 # - convert all plugin packages to store their plugins in this base
 #   directory.
-# known NPAPI compatible browsers from PLD Linux CVS:
+# - Add addons and themes support for gecko based browsers
+# Known NPAPI compatible browsers from PLD Linux CVS:
 # - galeon
 # - kazehakase
 # - konqueror
 # - mozilla
 # - mozilla-firefox
 # - mozilla-firefox-bin
-# - netscape (trigger on netscape-common)
-# - opera (ix86, ppc, sparc* only)
+# - netscape (update script on netscape-common package)
+# - opera (ix86, x86_64, ppc only)
 # - seamonkey
 # - skipstone
+# - iceweasel
+# - iceape
 Summary:	Base package for web browser plugins
 Summary(pl.UTF-8):	Podstawowy pakiet dla wtyczek przeglądarek WWW
 Name:		browser-plugins
 Version:	3.0
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Base
 BuildRequires:	rpmbuild(macros) >= 1.356
