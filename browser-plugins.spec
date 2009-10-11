@@ -19,13 +19,13 @@ Summary:	Base package for web browser plugins
 Summary(pl.UTF-8):	Podstawowy pakiet dla wtyczek przeglądarek WWW
 Name:		browser-plugins
 Version:	3.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		Base
 BuildRequires:	rpmbuild(macros) >= 1.356
 Source0:	%{name}.README
 Source1:	%{name}-update.sh
-Requires:	filesystem >= 3.0-13
+Requires:	filesystem >= 2.0-2
 Requires:	findutils
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
